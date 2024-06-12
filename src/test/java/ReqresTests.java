@@ -7,8 +7,6 @@ import static org.hamcrest.Matchers.is;
 @Tag("api")
 public class ReqresTests extends TestBase {
 
-    String baseUrl = "https://reqres.in";
-
     @DisplayName("Positive Тест получения данных пользователя")
     @Tag("api_getSingleUser")
     @Test

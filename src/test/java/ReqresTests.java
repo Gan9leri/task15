@@ -66,7 +66,7 @@ public class ReqresTests {
     @DisplayName("Negative Тест получения данных материала")
     @Tag("tag_getSingleResourceNotFount")
     @Test
-    void getSingleResourceNotFount(){
+    void getSingleResourceNotFound(){
         given().log().all().
                 get(baseUrl + "/api/unknown/23").
                 then().log().all().

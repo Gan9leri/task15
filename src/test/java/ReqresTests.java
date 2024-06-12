@@ -5,7 +5,7 @@ import static org.hamcrest.Matchers.is;
 
 @DisplayName("API тесты")
 @Tag("api")
-public class ReqresTests {
+public class ReqresTests extends TestBase {
 
     String baseUrl = "https://reqres.in";
 
@@ -14,7 +14,7 @@ public class ReqresTests {
     @Test
     void getSingleUser(){
         given().log().all().
-                get(baseUrl + "/api/users/2").
+                get("users/2").
                 then().log().all().
                 statusCode(200).
                 body("data.first_name", is("Janet"));
@@ -25,7 +25,7 @@ public class ReqresTests {
     @Test
     void getListUsers(){
         given().log().all().
-                get(baseUrl + "/api/users?page=2").
+                get("users?page=2").
                 then().log().all().
                 statusCode(200).
                 body("total", is(12));
@@ -36,7 +36,7 @@ public class ReqresTests {
     @Test
     void getSingleUserNotFound(){
         given().log().all().
-                get(baseUrl + "/api/users/23").
+                get("users/23").
                 then().log().all().
                 statusCode(404);
     }
@@ -46,7 +46,7 @@ public class ReqresTests {
     @Test
     void getListResource(){
         given().log().all().
-                get(baseUrl + "/api/unknown").
+                get("unknown").
                 then().log().all().
                 statusCode(200).
                 body("per_page", is(6));
@@ -57,7 +57,7 @@ public class ReqresTests {
     @Test
     void getSingleResource(){
         given().log().all().
-                get(baseUrl + "/api/unknown/2").
+                get("unknown/2").
                 then().log().all().
                 statusCode(200).
                 body("data.name", is("fuchsia rose"));
@@ -68,7 +68,7 @@ public class ReqresTests {
     @Test
     void getSingleResourceNotFound(){
         given().log().all().
-                get(baseUrl + "/api/unknown/23").
+                get("unknown/23").
                 then().log().all().
                 statusCode(404);
     }
